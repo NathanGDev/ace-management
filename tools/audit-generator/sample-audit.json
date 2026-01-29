@@ -1,0 +1,91 @@
+{
+  "businessName": "Sample Remodeling",
+  "ownerName": "Mike",
+  "website": "sampleremodeling.com",
+  "phone": "(317) 555-0123",
+  "date": "January 29, 2026",
+  "avgJobValue": "$25,000",
+  "overallScore": 34,
+  "executiveSummary": "Sample Remodeling has built a solid reputation through word-of-mouth, but your website isn't pulling its weight. We found critical gaps in lead capture, mobile experience, and local SEO that are costing you an estimated $100K+ in annual revenue. The good news: these are fixable, and fixing them puts you ahead of 90% of your competitors.",
+  "categories": [
+    {
+      "name": "First Impressions",
+      "icon": "👁️",
+      "score": 3,
+      "maxScore": 10,
+      "issues": [
+        "No clear headline — visitors don't know what you do in 3 seconds",
+        "Stock photos instead of real project photos",
+        "CTA button buried below the fold"
+      ],
+      "benchmark": "Top contractors have a clear value prop + quote form visible immediately"
+    },
+    {
+      "name": "Mobile Experience",
+      "icon": "📱",
+      "score": 4,
+      "maxScore": 10,
+      "issues": [
+        "Menu doesn't collapse properly on mobile",
+        "Phone number not clickable",
+        "Text too small to read without zooming"
+      ],
+      "benchmark": "60%+ of your visitors are on mobile. They should be able to call you in one tap."
+    },
+    {
+      "name": "Trust & Credibility",
+      "icon": "⭐",
+      "score": 5,
+      "maxScore": 10,
+      "issues": [
+        "No Google reviews displayed on site",
+        "No before/after project photos",
+        "License and insurance info not visible"
+      ],
+      "benchmark": "Homeowners check 3-5 contractors before calling. Reviews and photos win."
+    },
+    {
+      "name": "Lead Capture",
+      "icon": "🎯",
+      "score": 2,
+      "maxScore": 10,
+      "issues": [
+        "No quote request form on homepage",
+        "Contact page requires too many fields",
+        "No sticky phone number on mobile"
+      ],
+      "benchmark": "Best contractor sites have a form above the fold + click-to-call everywhere."
+    },
+    {
+      "name": "SEO & Visibility",
+      "icon": "🔍",
+      "score": 3,
+      "maxScore": 10,
+      "issues": [
+        "Not ranking for '[service] Indianapolis'",
+        "No service area pages",
+        "Missing Google Business Profile optimization"
+      ],
+      "benchmark": "Local SEO = free leads forever. Service area pages rank for '[service] in [city]'."
+    }
+  ],
+  "revenueImpact": {
+    "currentConversion": "under 1%",
+    "potentialConversion": "5-8%",
+    "estimatedMonthlyVisitors": 500,
+    "avgJobValue": "$25,000",
+    "lostLeadsPerMonth": "10-20",
+    "annualRevenueLost": "$100K-300K"
+  },
+  "competitors": [
+    "Competitor A ranks #1 for 'Indianapolis kitchen remodeling' — they have 12 service pages, you have 1",
+    "Competitor B has 85 Google reviews displayed on their site — you have 0 shown"
+  ],
+  "recommendations": [
+    "Add a clear headline + quote form above the fold",
+    "Display your best Google reviews prominently",
+    "Add before/after project gallery",
+    "Make phone number click-to-call and sticky on mobile",
+    "Create service area pages for each city you serve"
+  ]
+}

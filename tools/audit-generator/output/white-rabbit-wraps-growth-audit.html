@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Growth Audit: White Rabbit Wraps | Ace Growth</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0f172a;
+            --primary-light: #1e293b;
+            --accent: #b8956e;
+            --accent-light: #d4b896;
+            --accent-glow: rgba(184, 149, 110, 0.15);
+            --danger: #ef4444;
+            --danger-light: #fef2f2;
+            --warning: #f59e0b;
+            --warning-light: #fffbeb;
+            --success: #22c55e;
+            --success-light: #f0fdf4;
+            --text: #1e293b;
+            --text-secondary: #475569;
+            --text-muted: #94a3b8;
+            --bg: #f8fafc;
+            --card: #ffffff;
+            --border: #e2e8f0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 840px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, #1a2744 100%);
+            color: white;
+            padding: 3.5rem 2rem 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(184,149,110,0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(184,149,110,0.06) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .header-content { position: relative; z-index: 1; }
+
+        .eyebrow {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1.25rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .eyebrow::before, .eyebrow::after {
+            content: '';
+            width: 24px;
+            height: 1px;
+            background: var(--accent);
+            opacity: 0.5;
+        }
+
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.25rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.01em;
+        }
+
+        .header-meta {
+            font-size: 0.85rem;
+            opacity: 0.6;
+            font-weight: 300;
+        }
+
+        .header-meta span {
+            margin: 0 0.5rem;
+            opacity: 0.4;
+        }
+
+        /* ===== SECTIONS ===== */
+        .section {
+            background: var(--card);
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin: 1.75rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.02);
+            border: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-label {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+        }
+
+        .section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--primary);
+            margin-bottom: 1.25rem;
+        }
+
+        /* ===== OVERALL SCORE ===== */
+        .score-section {
+            text-align: center;
+            padding: 3rem 2.5rem;
+        }
+
+        .score-ring-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 2rem;
+        }
+
+        .score-ring {
+            width: 200px;
+            height: 200px;
+            transform: rotate(-90deg);
+        }
+
+        .score-ring-bg {
+            fill: none;
+            stroke: #f1f5f9;
+            stroke-width: 10;
+        }
+
+        .score-ring-fill {
+            fill: none;
+            stroke-width: 10;
+            stroke-linecap: round;
+            stroke-dasharray: 565.48;
+            stroke-dashoffset: 565.48;
+            transition: stroke-dashoffset 1.5s ease-out, stroke 0.3s ease;
+        }
+
+        .score-ring-fill.animated {
+            stroke-dashoffset: 333.63;
+        }
+
+        .score-number {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .score-number .value {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1;
+        }
+
+        .score-number .out-of {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .score-label {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #f59e0b;
+            margin-bottom: 0.5rem;
+        }
+
+        .score-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        /* ===== EXECUTIVE SUMMARY ===== */
+        .executive-summary p {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            line-height: 1.85;
+        }
+
+        /* ===== CATEGORY SCORES ===== */
+        .category {
+            padding: 1.75rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .category:last-child { border-bottom: none; }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .category-name {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .category-icon {
+            font-size: 1.25rem;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg);
+            border-radius: 10px;
+        }
+
+        .category-title {
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: var(--primary);
+        }
+
+        .category-score-badge {
+            font-size: 0.85rem;
+            font-weight: 700;
+            padding: 0.35rem 0.85rem;
+            border-radius: 100px;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        .score-low { background: var(--danger-light); color: var(--danger); }
+        .score-mid { background: var(--warning-light); color: var(--warning); }
+        .score-high { background: var(--success-light); color: var(--success); }
+
+        .category-bar-container {
+            width: 100%;
+            height: 8px;
+            background: #f1f5f9;
+            border-radius: 100px;
+            overflow: hidden;
+            margin-bottom: 1.25rem;
+        }
+
+        .category-bar-fill {
+            height: 100%;
+            border-radius: 100px;
+            width: 0%;
+            transition: width 1.2s ease-out;
+        }
+
+        .category-bar-fill.animated {
+            width: var(--fill-width);
+        }
+
+        .bar-danger { background: linear-gradient(90deg, var(--danger), #f87171); }
+        .bar-warning { background: linear-gradient(90deg, var(--warning), #fbbf24); }
+        .bar-success { background: linear-gradient(90deg, var(--success), #4ade80); }
+
+        .category-issues {
+            list-style: none;
+            margin-bottom: 1rem;
+        }
+
+        .category-issues li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .category-issues li::before {
+            content: '✕';
+            position: absolute;
+            left: 0;
+            color: var(--danger);
+            font-size: 0.75rem;
+            font-weight: 700;
+            top: 0.6rem;
+        }
+
+        .category-benchmark {
+            background: var(--accent-glow);
+            border-radius: 10px;
+            padding: 1rem 1.25rem;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            border-left: 3px solid var(--accent);
+        }
+
+        .category-benchmark strong {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* ===== REVENUE IMPACT ===== */
+        .revenue-section {
+            background: linear-gradient(135deg, var(--primary) 0%, #1a2744 100%);
+            color: white;
+            border: none;
+        }
+
+        .revenue-section .section-label { color: var(--accent); }
+        .revenue-section h2 { color: white; }
+
+        .revenue-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+            margin: 2rem 0;
+        }
+
+        .revenue-stat {
+            text-align: center;
+            padding: 1.5rem 1rem;
+            background: rgba(255,255,255,0.06);
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .revenue-stat .stat-value {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--accent-light);
+            line-height: 1.2;
+        }
+
+        .revenue-stat .stat-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.6;
+            margin-top: 0.5rem;
+        }
+
+        .revenue-explanation {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            opacity: 0.85;
+        }
+
+        .revenue-explanation p {
+            margin-bottom: 1rem;
+        }
+
+        .revenue-highlight {
+            background: rgba(184,149,110,0.15);
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            margin-top: 1.5rem;
+            border: 1px solid rgba(184,149,110,0.2);
+            font-weight: 500;
+            text-align: center;
+            font-size: 1.05rem;
+        }
+
+        /* ===== COMPETITORS ===== */
+        .competitor-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            padding: 1.25rem;
+            background: var(--warning-light);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            border-left: 3px solid var(--warning);
+        }
+
+        .competitor-item:last-child { margin-bottom: 0; }
+
+        .competitor-icon {
+            font-size: 1.25rem;
+            flex-shrink: 0;
+            margin-top: 0.1rem;
+        }
+
+        .competitor-text {
+            font-size: 0.9rem;
+            color: #92400e;
+            line-height: 1.6;
+        }
+
+        /* ===== RECOMMENDATIONS ===== */
+        .recommendation-list {
+            list-style: none;
+            counter-reset: rec-counter;
+        }
+
+        .recommendation-item {
+            counter-increment: rec-counter;
+            display: flex;
+            align-items: flex-start;
+            gap: 1.25rem;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .recommendation-item:last-child { border-bottom: none; }
+
+        .rec-number {
+            min-width: 36px;
+            height: 36px;
+            background: var(--primary);
+            color: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .rec-number::before {
+            content: counter(rec-counter);
+        }
+
+        .rec-content {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.65;
+        }
+
+        .rec-priority {
+            display: inline-block;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            margin-left: 0.5rem;
+            vertical-align: middle;
+        }
+
+        .priority-high { background: var(--danger-light); color: var(--danger); }
+        .priority-medium { background: var(--warning-light); color: var(--warning); }
+
+        /* ===== CTA ===== */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary) 0%, #1a2744 100%);
+            color: white;
+            text-align: center;
+            padding: 3.5rem 2.5rem;
+            border-radius: 16px;
+            margin: 1.75rem 0;
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -20%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(184,149,110,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .cta-section .section-label { color: var(--accent); }
+
+        .cta-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.85rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            opacity: 0.8;
+            max-width: 480px;
+            margin: 0 auto 1rem;
+            font-size: 0.95rem;
+        }
+
+        .cta-exclusivity {
+            font-size: 0.85rem;
+            opacity: 0.6;
+            font-style: italic;
+            margin-bottom: 2rem !important;
+        }
+
+        .cta-phone {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2.5rem;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-phone:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(184,149,110,0.35);
+        }
+
+        .cta-or {
+            display: block;
+            margin: 1.25rem 0;
+            font-size: 0.8rem;
+            opacity: 0.4;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+
+        .cta-email {
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            border-bottom: 1px solid rgba(184,149,110,0.3);
+            padding-bottom: 2px;
+            transition: border-color 0.3s;
+        }
+
+        .cta-email:hover { border-color: var(--accent-light); }
+
+        /* ===== FOOTER ===== */
+        footer {
+            text-align: center;
+            padding: 2.5rem 2rem 3rem;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .footer-line {
+            width: 40px;
+            height: 2px;
+            background: var(--accent);
+            margin: 0 auto 1rem;
+            opacity: 0.3;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 640px) {
+            header { padding: 2.5rem 1.5rem 2rem; }
+            header h1 { font-size: 1.75rem; }
+            .section { padding: 1.75rem 1.25rem; margin: 1.25rem 0; }
+            .score-ring-container { width: 160px; height: 160px; }
+            .score-ring { width: 160px; height: 160px; }
+            .score-number .value { font-size: 2.75rem; }
+            .revenue-grid { grid-template-columns: 1fr; }
+            .category-header { flex-wrap: wrap; gap: 0.75rem; }
+            .cta-section { padding: 2.5rem 1.5rem; }
+            .cta-section h2 { font-size: 1.5rem; }
+            .cta-phone { font-size: 1rem; padding: 0.85rem 2rem; }
+        }
+
+        /* ===== PRINT STYLES ===== */
+        @media print {
+            body { background: white; }
+            header { background: var(--primary) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .section { 
+                opacity: 1 !important; 
+                transform: none !important; 
+                break-inside: avoid;
+                box-shadow: none;
+                border: 1px solid #e2e8f0;
+            }
+            .category-bar-fill { width: var(--fill-width) !important; transition: none; }
+            .score-ring-fill { stroke-dashoffset: 333.63 !important; transition: none; }
+            .revenue-section, .cta-section { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .cta-phone { box-shadow: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="header-content">
+            <p class="eyebrow">Growth Audit</p>
+            <h1>White Rabbit Wraps</h1>
+            <p class="header-meta">January 29, 2026 <span>•</span> Prepared by Ace Growth</p>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <!-- OVERALL SCORE -->
+        <div class="section score-section" id="score-section">
+            <p class="section-label">Overall Performance</p>
+            <div class="score-ring-container">
+                <svg class="score-ring" viewBox="0 0 200 200">
+                    <circle class="score-ring-bg" cx="100" cy="100" r="90"/>
+                    <circle class="score-ring-fill" cx="100" cy="100" r="90" stroke="#f59e0b"/>
+                </svg>
+                <div class="score-number">
+                    <div class="value" id="score-value">0</div>
+                    <div class="out-of">out of 100</div>
+                </div>
+            </div>
+            <div class="score-label">Below Average — Room for Improvement</div>
+            <div class="score-subtitle">Your site has some strengths, but critical gaps are costing you leads. Targeted fixes can make a big difference.</div>
+        </div>
+
+        <!-- EXECUTIVE SUMMARY -->
+        <div class="section executive-summary">
+            <p class="section-label">Executive Summary</p>
+            <h2>What We Found</h2>
+            <p>White Rabbit Wraps has strong reviews (64+ on Google, 5 stars) and a solid service lineup — but their website is leaving money on the table. No click-to-call, no quote form above the fold, buried portfolio, and zero local SEO. For a business with this much credibility, the site should be converting 5-8% of visitors. Right now it's likely under 1%.</p>
+        </div>
+
+        <!-- CATEGORY SCORES -->
+        <div class="section">
+            <p class="section-label">Detailed Analysis</p>
+            <h2>Category Breakdown</h2>
+
+            
+            <div class="category">
+                <div class="category-header">
+                    <div class="category-name">
+                        <div class="category-icon">📋</div>
+                        <div class="category-title">First Impressions</div>
+                    </div>
+                    <div class="category-score-badge score-mid">5/10</div>
+                </div>
+                <div class="category-bar-container">
+                    <div class="category-bar-fill bar-warning" style="--fill-width: 50%"></div>
+                </div>
+                <ul class="category-issues">
+                    <li>Hero section says 'Brand your Adventure' — doesn't tell visitors what you do in 3 seconds</li>
+                    <li>No phone number visible above the fold on desktop or mobile</li>
+                    <li>Stats section shows '0+' for all metrics (counters may not load or initialize)</li>
+                    <li>Multiple 'Adventure' CTAs (Commercial, Personal, Architectural, Coincide) — confusing for first-time visitors</li>
+                </ul>
+                <div class="category-benchmark">
+                    <strong>What good looks like:</strong> Top wrap shops lead with a bold headline like 'Premium Vehicle Wraps in Carmel, IN' + phone number + 'Get a Quote' button all visible within 3 seconds.
+                </div>
+            </div>
+
+            <div class="category">
+                <div class="category-header">
+                    <div class="category-name">
+                        <div class="category-icon">📋</div>
+                        <div class="category-title">Mobile Experience</div>
+                    </div>
+                    <div class="category-score-badge score-mid">5/10</div>
+                </div>
+                <div class="category-bar-container">
+                    <div class="category-bar-fill bar-warning" style="--fill-width: 50%"></div>
+                </div>
+                <ul class="category-issues">
+                    <li>Phone number is not click-to-call anywhere on the site</li>
+                    <li>No sticky mobile CTA bar for instant contact</li>
+                    <li>Service cards require scrolling through walls of text to find what you need</li>
+                    <li>No mobile-optimized quote form — users have to hunt for contact info</li>
+                </ul>
+                <div class="category-benchmark">
+                    <strong>What good looks like:</strong> 70%+ of vehicle wrap searches happen on mobile. One-tap calling and a sticky quote button are non-negotiable.
+                </div>
+            </div>
+
+            <div class="category">
+                <div class="category-header">
+                    <div class="category-name">
+                        <div class="category-icon">📋</div>
+                        <div class="category-title">Trust & Credibility</div>
+                    </div>
+                    <div class="category-score-badge score-high">7/10</div>
+                </div>
+                <div class="category-bar-container">
+                    <div class="category-bar-fill bar-success" style="--fill-width: 70%"></div>
+                </div>
+                <ul class="category-issues">
+                    <li>Has 64+ Google reviews at 5 stars — but only 4 testimonials shown on site</li>
+                    <li>No Google review widget or badge (missing the biggest trust signal)</li>
+                    <li>Portfolio section exists but images are small and lack detail (no before/after)</li>
+                    <li>Woman-owned business badge not prominently featured (strong differentiator)</li>
+                </ul>
+                <div class="category-benchmark">
+                    <strong>What good looks like:</strong> 64 five-star reviews is a goldmine. Display them prominently with a Google badge. Before/after galleries with vehicle details sell the work.
+                </div>
+            </div>
+
+            <div class="category">
+                <div class="category-header">
+                    <div class="category-name">
+                        <div class="category-icon">📋</div>
+                        <div class="category-title">Lead Capture</div>
+                    </div>
+                    <div class="category-score-badge score-low">3/10</div>
+                </div>
+                <div class="category-bar-container">
+                    <div class="category-bar-fill bar-danger" style="--fill-width: 30%"></div>
+                </div>
+                <ul class="category-issues">
+                    <li>No quote request form visible on the homepage</li>
+                    <li>Contact info buried — no phone number in header or hero section</li>
+                    <li>No chat widget or after-hours lead capture</li>
+                    <li>CTA buttons say 'Adventure' instead of clear actions like 'Get a Free Quote'</li>
+                    <li>Kae submitted an inquiry through the site and never received a response — leads are falling through</li>
+                </ul>
+                <div class="category-benchmark">
+                    <strong>What good looks like:</strong> Every page should have a quote form or click-to-call. Best wrap shops capture leads 24/7 with forms + auto-responders.
+                </div>
+            </div>
+
+            <div class="category">
+                <div class="category-header">
+                    <div class="category-name">
+                        <div class="category-icon">📋</div>
+                        <div class="category-title">SEO & Visibility</div>
+                    </div>
+                    <div class="category-score-badge score-mid">4/10</div>
+                </div>
+                <div class="category-bar-container">
+                    <div class="category-bar-fill bar-warning" style="--fill-width: 40%"></div>
+                </div>
+                <ul class="category-issues">
+                    <li>Title tag is generic: 'Enhance Your Brand with WHITE RABBIT WRAPS in Carmel'</li>
+                    <li>No service-specific pages (no 'Vehicle Wraps Carmel IN' or 'PPF Installation Indianapolis' pages)</li>
+                    <li>No blog content targeting local search terms</li>
+                    <li>No Schema.org markup for local business</li>
+                    <li>Not ranking for high-intent searches like 'car wrap near me carmel indiana'</li>
+                </ul>
+                <div class="category-benchmark">
+                    <strong>What good looks like:</strong> Service area pages = free organic leads forever. Each service + city combo should have its own page targeting 'vehicle wraps [city]'.
+                </div>
+            </div>
+
+        </div>
+
+        <!-- REVENUE IMPACT -->
+        <div class="section revenue-section">
+            <p class="section-label">Revenue Impact</p>
+            <h2>What This Is Costing You</h2>
+
+            <div class="revenue-grid">
+                <div class="revenue-stat">
+                    <div class="stat-value">Under 1%</div>
+                    <div class="stat-label">Your Est. Conversion</div>
+                </div>
+                <div class="revenue-stat">
+                    <div class="stat-value">5-8%</div>
+                    <div class="stat-label">Industry Best</div>
+                </div>
+                <div class="revenue-stat">
+                    <div class="stat-value">$100K+</div>
+                    <div class="stat-label">Est. Annual Revenue Lost</div>
+                </div>
+            </div>
+
+            <div class="revenue-explanation">
+                <p>Contractors with optimized websites convert 5-8% of visitors into leads. Based on our analysis, your site likely converts Under 1% — meaning you're losing an estimated 10-20 qualified leads every single month.</p>
+                <p>At an average job value of $3,500, even 2 extra leads per month could mean $30,000-$100,000+ in additional annual revenue.</p>
+            </div>
+
+            <div class="revenue-highlight">
+                💰 Estimated annual revenue left on the table: <strong>$100K+</strong>
+            </div>
+        </div>
+
+        <!-- COMPETITOR SNAPSHOT -->
+        <div class="section">
+            <p class="section-label">Competitive Landscape</p>
+            <h2>What Your Competitors Are Doing</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 0.9rem;">While you read this, your competitors are capturing the leads you're missing.</p>
+
+            
+            <div class="competitor-item">
+                <div class="competitor-icon">⚠️</div>
+                <div class="competitor-text">Competitors with dedicated service pages for 'car wraps Indianapolis' and 'PPF Carmel IN' are ranking above you in Google</div>
+            </div>
+
+            <div class="competitor-item">
+                <div class="competitor-icon">⚠️</div>
+                <div class="competitor-text">Shops with Google review widgets on their homepage build instant trust — you have 64 reviews but visitors can't see them</div>
+            </div>
+
+            <div class="competitor-item">
+                <div class="competitor-icon">⚠️</div>
+                <div class="competitor-text">Top wrap shops in Indiana have quote forms above the fold with same-day response guarantees</div>
+            </div>
+
+        </div>
+
+        <!-- RECOMMENDATIONS -->
+        <div class="section">
+            <p class="section-label">Action Plan</p>
+            <h2>Top Fixes — In Priority Order</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 0.9rem;">These are the highest-impact changes you can make, ranked by potential ROI.</p>
+
+            <ol class="recommendation-list">
+                
+                <li class="recommendation-item">
+                    <div class="rec-number"></div>
+                    <div class="rec-content">Add a quote form and click-to-call phone number above the fold — this is the #1 fix <span class="rec-priority priority-high">High Impact</span></div>
+                </li>
+
+                <li class="recommendation-item">
+                    <div class="rec-number"></div>
+                    <div class="rec-content">Display your 64 Google reviews with a live widget — this is your strongest asset <span class="rec-priority priority-high">High Impact</span></div>
+                </li>
+
+                <li class="recommendation-item">
+                    <div class="rec-number"></div>
+                    <div class="rec-content">Create service-specific landing pages (Vehicle Wraps, PPF, Window Tinting, etc.) targeting local keywords <span class="rec-priority priority-medium">Medium Impact</span></div>
+                </li>
+
+                <li class="recommendation-item">
+                    <div class="rec-number"></div>
+                    <div class="rec-content">Feature your woman-owned business story prominently — it's a powerful differentiator <span class="rec-priority priority-medium">Medium Impact</span></div>
+                </li>
+
+                <li class="recommendation-item">
+                    <div class="rec-number"></div>
+                    <div class="rec-content">Add before/after portfolio gallery with vehicle details and project descriptions </div>
+                </li>
+
+            </ol>
+        </div>
+
+        <!-- CTA -->
+        <div class="section cta-section">
+            <p class="section-label">Next Step</p>
+            <h2>Ready to Fix This?</h2>
+            <p>You don't need to tackle everything at once. Let's start with the 1-2 changes that will have the biggest impact on your bottom line.</p>
+            <p class="cta-exclusivity">I only work with one contractor per service area. Let's talk before your competitor does.</p>
+            <a href="tel:+13175727018" class="cta-phone">📞 (317) 572-7018</a>
+            <span class="cta-or">or</span>
+            <a href="mailto:nathan@acegrowth.net" class="cta-email">nathan@acegrowth.net</a>
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="footer-line"></div>
+        <p>Prepared by <a href="https://acegrowth.net">Ace Growth</a></p>
+        <p style="margin-top: 0.5rem;">This audit is confidential and prepared exclusively for White Rabbit Wraps.</p>
+    </footer>
+
+    <script>
+        // Intersection Observer for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+
+                    // Animate bars within this section
+                    entry.target.querySelectorAll('.category-bar-fill').forEach(bar => {
+                        setTimeout(() => bar.classList.add('animated'), 200);
+                    });
+
+                    // Animate score ring
+                    const ring = entry.target.querySelector('.score-ring-fill');
+                    if (ring) {
+                        setTimeout(() => ring.classList.add('animated'), 300);
+                    }
+
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Animate score counter
+        const scoreSection = document.getElementById('score-section');
+        const scoreValue = document.getElementById('score-value');
+        const targetScore = 41;
+        let hasAnimated = false;
+
+        const scoreObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !hasAnimated) {
+                    hasAnimated = true;
+                    let current = 0;
+                    const duration = 1500;
+                    const increment = targetScore / (duration / 16);
+
+                    function animateScore() {
+                        current += increment;
+                        if (current >= targetScore) {
+                            scoreValue.textContent = targetScore;
+                            return;
+                        }
+                        scoreValue.textContent = Math.floor(current);
+                        requestAnimationFrame(animateScore);
+                    }
+                    setTimeout(animateScore, 400);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        if (scoreSection) scoreObserver.observe(scoreSection);
+    </script>
+</body>
+</html>

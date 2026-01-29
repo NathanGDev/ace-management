@@ -9,7 +9,7 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 TEMPLATE="$SCRIPT_DIR/audit-template.html"
-DEPLOY_ROOT="/var/www/acegrowth.net/demos"
+DEPLOY_ROOT="/var/www/acemanagement.so/demos"
 
 # --- Helpers ---
 usage() {

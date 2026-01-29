@@ -1,0 +1,87 @@
+{
+  "businessName": "Sample Remodeling Co",
+  "tagline": "Indianapolis' Most Trusted Remodeler",
+  "phone": "(317) 555-0123",
+  "email": "info@sampleremodeling.com",
+  "website": "https://sampleremodeling.com",
+  "address": "123 Main St, Indianapolis, IN 46204",
+  "hours": "Mon–Fri 7AM–6PM, Sat 8AM–2PM",
+  "yearsInBusiness": 15,
+  "projectsCompleted": "500+",
+  "reviewCount": "200+",
+  "licenseNumber": "LIC-12345",
+  "colors": {
+    "primary": "#1a2332",
+    "accent": "#ff6b35",
+    "light": "#f8f9fa"
+  },
+  "services": [
+    {
+      "name": "Kitchen Remodeling",
+      "description": "Complete kitchen transformations from cabinets to countertops. We design and build your dream kitchen.",
+      "icon": "kitchen"
+    },
+    {
+      "name": "Bathroom Renovation",
+      "description": "Modern bathroom upgrades including tile, vanities, showers, and full gut renovations.",
+      "icon": "bathroom"
+    },
+    {
+      "name": "Basement Finishing",
+      "description": "Transform unused space into living areas, home theaters, offices, and more.",
+      "icon": "basement"
+    },
+    {
+      "name": "Interior Painting",
+      "description": "Professional painting services with premium paints and meticulous prep work.",
+      "icon": "painting"
+    },
+    {
+      "name": "Flooring Installation",
+      "description": "Hardwood, tile, luxury vinyl, and carpet installation with flawless results.",
+      "icon": "flooring"
+    },
+    {
+      "name": "Decks & Outdoor Living",
+      "description": "Custom decks, patios, pergolas, and outdoor kitchens built to last.",
+      "icon": "deck"
+    }
+  ],
+  "serviceAreas": [
+    "Indianapolis",
+    "Carmel",
+    "Fishers",
+    "Noblesville",
+    "Westfield",
+    "Zionsville",
+    "Brownsburg",
+    "Avon",
+    "Greenwood",
+    "Lawrence"
+  ],
+  "testimonials": [
+    {
+      "name": "Sarah M.",
+      "text": "Absolutely incredible work on our kitchen remodel. They took our outdated 90s kitchen and turned it into a modern masterpiece. The team was professional, clean, and finished ahead of schedule. Could not recommend them more highly!",
+      "rating": 5,
+      "date": "2 months ago",
+      "project": "Kitchen Remodel"
+    },
+    {
+      "name": "James & Linda K.",
+      "text": "We've used them for two bathroom renovations now and both times the results exceeded our expectations. Fair pricing, excellent communication throughout the project, and the craftsmanship speaks for itself.",
+      "rating": 5,
+      "date": "3 weeks ago",
+      "project": "Bathroom Renovation"
+    },
+    {
+      "name": "Michael R.",
+      "text": "Had our entire basement finished and it's like we added a whole new floor to our house. The team was respectful of our home, showed up on time every day, and the quality is outstanding. Worth every penny.",
+      "rating": 5,
+      "date": "1 month ago",
+      "project": "Basement Finishing"
+    }
+  ],
+  "formAction": "https://formspree.io/f/YOUR_ID",
+  "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d195370.23!2d-86.33!3d39.78!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x886b50ffa7796a03%3A0xd68e9df640b9ea7c!2sIndianapolis%2C+IN!5e0!3m2!1sen!2sus"
+}

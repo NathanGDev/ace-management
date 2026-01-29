@@ -1,0 +1,49 @@
+{
+  "brokerageName": "Black Realty Company",
+  "tagline": "Unveiling Elegance. Redefining Luxury.",
+  "headline": "Your Dream Home Awaits in Indianapolis",
+  "phone": "(317) 710-7754",
+  "email": "summer@blackrealtycompany.com",
+  "address": "1533 Lewis St, Indianapolis IN 46202",
+  "hours": "Mon-Fri 8:30AM-6PM, Sat 9AM-2PM, Sun 12PM-4PM",
+  "website": "https://blackrealtycompany.com",
+  "licenseInfo": "Licensed in Indiana",
+  "colors": {
+    "primary": "#0f0f1a",
+    "accent": "#c9a962",
+    "light": "#f8f6f0"
+  },
+  "services": [
+    {"name": "Buy a Home", "description": "Expert guidance through every step of the home buying journey. From first-time buyers to seasoned investors.", "icon": "home"},
+    {"name": "Sell Your Home", "description": "Strategic pricing, stunning marketing, and skilled negotiation to maximize your return.", "icon": "sell"},
+    {"name": "Rentals & Leasing", "description": "Find your perfect rental or list your property with professional management.", "icon": "rent"},
+    {"name": "Property Management", "description": "Full-service management for investors. We handle tenants, maintenance, and everything in between.", "icon": "manage"}
+  ],
+  "team": [
+    {"name": "Summer Black", "title": "CEO & Managing Broker", "phone": "(317) 710-7754", "email": "summer@blackrealtycompany.com"},
+    {"name": "Erica Nelson", "title": "Realtor", "phone": "", "email": ""},
+    {"name": "Kylah Black", "title": "Realtor & Project Manager", "phone": "", "email": ""}
+  ],
+  "differentiators": [
+    {"title": "Women-Owned", "description": "A brokerage built on empowerment, inclusivity, and excellence."},
+    {"title": "Community First", "description": "Deeply rooted in Indianapolis, committed to building Black wealth through real estate."},
+    {"title": "Expert Guidance", "description": "From first home to investment portfolio — experienced agents who know the market."},
+    {"title": "Results That Speak", "description": "Our clients' success stories are our greatest credential."}
+  ],
+  "neighborhoods": ["Broad Ripple", "Fountain Square", "Irvington", "Meridian-Kessler", "Carmel", "Fishers", "Downtown Indianapolis", "Castleton", "Lawrence", "Greenwood"],
+  "testimonials": [
+    {"name": "Brandon H.", "text": "Highly recommended — she's not only relatable but also dedicated beyond measure. She handled the sale of my rental property and assisted both of my daughters in selling their homes too!", "rating": 5},
+    {"name": "Marilyn B.", "text": "I had the pleasure of working with Black Realty Co., and I am impressed with their exceptional management of my investment property while I live out of state.", "rating": 5},
+    {"name": "Melissa C.", "text": "I relocated to Indianapolis from Alabama for my job in Feb 2023, found a realtor, and closed on my home in May 2023. This was a very personable experience. I now have a beautiful home and forever friend.", "rating": 5}
+  ],
+  "featuredListings": [
+    {"address": "4521 N Meridian St", "city": "Indianapolis, IN 46208", "price": "$299,900", "beds": 4, "baths": 2, "sqft": "2,100", "status": "Active"},
+    {"address": "823 Fountain Square Ave", "city": "Indianapolis, IN 46203", "price": "$189,500", "beds": 3, "baths": 1.5, "sqft": "1,450", "status": "Active"},
+    {"address": "12034 Hazel Dell Pkwy", "city": "Carmel, IN 46033", "price": "$425,000", "beds": 5, "baths": 3, "sqft": "3,200", "status": "Active"}
+  ],
+  "formAction": "https://formspree.io/f/YOUR_ID",
+  "socialLinks": {
+    "facebook": "https://www.facebook.com/the.white.rabbit.wraps/",
+    "instagram": ""
+  }
+}

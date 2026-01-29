@@ -1,0 +1,1769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{BROKERAGE_NAME}} — {{TAGLINE}} Premier real estate services in Indianapolis. Buying, selling, rentals &amp; property management. Call {{PHONE}} today.">
+    <meta name="robots" content="index, follow">
+    <title>{{BROKERAGE_NAME}} | {{TAGLINE}} — Indianapolis Real Estate</title>
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="{{BROKERAGE_NAME}} | {{TAGLINE}}">
+    <meta property="og:description" content="Premier real estate services in Indianapolis. Expert guidance for buying, selling, rentals &amp; property management. Call {{PHONE}}.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:url" content="{{WEBSITE}}">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏡</text></svg>">
+
+    <!-- Schema.org RealEstateAgent -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "RealEstateAgent",
+        "name": "{{BROKERAGE_NAME}}",
+        "description": "{{TAGLINE}}",
+        "telephone": "{{PHONE}}",
+        "email": "{{EMAIL}}",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "{{ADDRESS_STREET}}",
+            "addressLocality": "Indianapolis",
+            "addressRegion": "IN",
+            "postalCode": "{{ADDRESS_ZIP}}",
+            "addressCountry": "US"
+        },
+        "openingHours": "{{HOURS}}",
+        "url": "{{WEBSITE}}",
+        "priceRange": "$$-$$$$",
+        "areaServed": {
+            "@type": "City",
+            "name": "Indianapolis"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "5",
+            "reviewCount": "50"
+        }
+    }
+    </script>
+
+    <style>
+        /* ===== RESET & BASE ===== */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: #f0ece4;
+            background: var(--primary);
+            font-weight: 400;
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        img { max-width: 100%; height: auto; display: block; }
+        a { color: inherit; text-decoration: none; }
+        button { cursor: pointer; font-family: inherit; }
+        ul { list-style: none; }
+
+        /* ===== CSS CUSTOM PROPERTIES ===== */
+        :root {
+            --primary: {{COLOR_PRIMARY}};
+            --primary-light: #1a1a2e;
+            --primary-lighter: #252540;
+            --accent: {{COLOR_ACCENT}};
+            --accent-light: #d4b878;
+            --accent-dark: #a8873e;
+            --light: {{COLOR_LIGHT}};
+            --white: #ffffff;
+            --text: #f0ece4;
+            --text-muted: #a0a0b0;
+            --text-dim: #6a6a7a;
+            --border: rgba(201, 169, 98, 0.15);
+            --border-light: rgba(255,255,255,0.08);
+            --glass: rgba(15, 15, 26, 0.7);
+            --glass-light: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(201, 169, 98, 0.12);
+            --serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+            --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+            --shadow-md: 0 4px 20px rgba(0,0,0,0.3);
+            --shadow-lg: 0 12px 40px rgba(0,0,0,0.4);
+            --shadow-xl: 0 20px 60px rgba(0,0,0,0.5);
+            --shadow-glow: 0 0 40px rgba(201, 169, 98, 0.1);
+            --radius: 8px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            --container: 1200px;
+        }
+
+        /* ===== UTILITIES ===== */
+        .container {
+            max-width: var(--container);
+            margin: 0 auto;
+            padding: 0 clamp(1.25rem, 4vw, 3rem);
+        }
+        .section-eyebrow {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .section-eyebrow::before {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 1px;
+            background: var(--accent);
+        }
+        .section-eyebrow.center { justify-content: center; }
+        .section-eyebrow.center::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 1px;
+            background: var(--accent);
+        }
+        .section-title {
+            font-family: var(--serif);
+            font-size: clamp(2rem, 4.5vw, 3rem);
+            font-weight: 600;
+            line-height: 1.15;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+        .section-subtitle {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            line-height: 1.7;
+        }
+        .section-header { margin-bottom: 3.5rem; }
+        .section-header.center { text-align: center; }
+        .section-header.center .section-subtitle { margin: 0 auto; }
+        section {
+            padding: clamp(4rem, 8vw, 7rem) 0;
+        }
+
+        /* Gold divider */
+        .gold-divider {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            margin: 1.5rem 0;
+        }
+        .gold-divider.center { margin: 1.5rem auto; }
+
+        /* Scroll animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+        @media (prefers-reduced-motion: reduce) {
+            .reveal { opacity: 1; transform: none; transition: none; }
+        }
+
+        /* ===== GLASS CARD ===== */
+        .glass-card {
+            background: var(--glass-light);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+        }
+        .glass-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-glow);
+            border-color: rgba(201, 169, 98, 0.25);
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.875rem 2rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-radius: var(--radius);
+            transition: all var(--transition);
+            border: none;
+            cursor: pointer;
+            letter-spacing: 0.02em;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            color: var(--primary);
+            box-shadow: 0 4px 20px rgba(201, 169, 98, 0.3);
+        }
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--accent-light), var(--accent));
+            box-shadow: 0 6px 30px rgba(201, 169, 98, 0.4);
+            transform: translateY(-2px);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 1.5px solid rgba(255,255,255,0.3);
+        }
+        .btn-outline:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: rgba(201, 169, 98, 0.05);
+        }
+        .btn-ghost {
+            background: transparent;
+            color: var(--accent);
+            padding: 0.5rem 0;
+            font-weight: 500;
+        }
+        .btn-ghost:hover { color: var(--accent-light); }
+        .btn-ghost svg { transition: transform var(--transition); }
+        .btn-ghost:hover svg { transform: translateX(4px); }
+
+        /* ===== HEADER ===== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0 clamp(1.25rem, 4vw, 3rem);
+            transition: background var(--transition), box-shadow var(--transition);
+        }
+        .header.scrolled {
+            background: rgba(15, 15, 26, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 1px 30px rgba(0,0,0,0.3);
+        }
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: var(--container);
+            margin: 0 auto;
+            height: 80px;
+            transition: height var(--transition);
+        }
+        .header.scrolled .header-inner { height: 68px; }
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .header-logo {
+            font-family: var(--serif);
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.2;
+        }
+        .header-logo span { color: var(--accent); }
+        .header-nav {
+            display: none;
+            align-items: center;
+            gap: 2rem;
+        }
+        .header-nav a {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            transition: color var(--transition);
+            letter-spacing: 0.02em;
+        }
+        .header-nav a:hover { color: var(--accent); }
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .header-phone {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--white);
+            transition: color var(--transition);
+        }
+        .header-phone:hover { color: var(--accent); }
+        .header-phone svg { width: 18px; height: 18px; flex-shrink: 0; }
+        .header-phone-text { display: none; }
+        .btn-cta-header {
+            display: none;
+            padding: 0.65rem 1.5rem;
+            font-size: 0.82rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            color: var(--primary);
+            border-radius: var(--radius);
+            border: none;
+            transition: all var(--transition);
+        }
+        .btn-cta-header:hover {
+            background: linear-gradient(135deg, var(--accent-light), var(--accent));
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(201, 169, 98, 0.3);
+        }
+
+        /* Mobile menu */
+        .mobile-toggle {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 6px;
+        }
+        .mobile-toggle span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--white);
+            border-radius: 2px;
+            transition: all var(--transition);
+        }
+        .mobile-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .mobile-toggle.active span:nth-child(2) { opacity: 0; }
+        .mobile-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(15, 15, 26, 0.98);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity var(--transition);
+        }
+        .mobile-menu.active { opacity: 1; pointer-events: all; }
+        .mobile-menu a {
+            font-family: var(--serif);
+            font-size: 1.5rem;
+            color: var(--white);
+            transition: color var(--transition);
+        }
+        .mobile-menu a:hover { color: var(--accent); }
+        .mobile-menu .mobile-phone {
+            font-family: var(--sans);
+            font-size: 1rem;
+            color: var(--accent);
+            margin-top: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .header-phone-text { display: inline; }
+            .btn-cta-header { display: inline-flex; }
+        }
+        @media (min-width: 1024px) {
+            .header-nav { display: flex; }
+            .mobile-toggle { display: none; }
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 0 6rem;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(201, 169, 98, 0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 20%, rgba(201, 169, 98, 0.05) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 80%, rgba(100, 80, 40, 0.03) 0%, transparent 50%);
+            z-index: 0;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 200px;
+            background: linear-gradient(to top, var(--primary), transparent);
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+        }
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            padding: 0.5rem 1.25rem;
+            background: rgba(201, 169, 98, 0.08);
+            border: 1px solid rgba(201, 169, 98, 0.15);
+            border-radius: 100px;
+        }
+        .hero h1 {
+            font-family: var(--serif);
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            line-height: 1.1;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+        }
+        .hero h1 em {
+            color: var(--accent);
+            font-style: italic;
+        }
+        .hero-sub {
+            font-size: clamp(1rem, 2vw, 1.15rem);
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 2.5rem;
+            max-width: 540px;
+        }
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            padding-top: 2.5rem;
+            border-top: 1px solid var(--border-light);
+        }
+        .hero-stat-value {
+            font-family: var(--serif);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1;
+        }
+        .hero-stat-label {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            margin-top: 0.35rem;
+            letter-spacing: 0.02em;
+        }
+        /* Decorative element */
+        .hero-decor {
+            position: absolute;
+            top: 50%;
+            right: -5%;
+            width: 500px;
+            height: 500px;
+            border: 1px solid rgba(201, 169, 98, 0.06);
+            border-radius: 50%;
+            transform: translateY(-50%);
+            z-index: 0;
+        }
+        .hero-decor::after {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            right: 40px;
+            bottom: 40px;
+            border: 1px solid rgba(201, 169, 98, 0.04);
+            border-radius: 50%;
+        }
+        @media (max-width: 768px) {
+            .hero-stats { gap: 2rem; }
+            .hero-decor { display: none; }
+        }
+
+        /* ===== SERVICES ===== */
+        .services { background: var(--primary); }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+        .service-card {
+            padding: 2.5rem 2rem;
+            text-align: center;
+        }
+        .service-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(201, 169, 98, 0.08);
+            border: 1px solid rgba(201, 169, 98, 0.15);
+            border-radius: 16px;
+            color: var(--accent);
+            transition: all var(--transition);
+        }
+        .service-card:hover .service-icon {
+            background: rgba(201, 169, 98, 0.15);
+            box-shadow: 0 0 30px rgba(201, 169, 98, 0.15);
+        }
+        .service-icon svg { width: 28px; height: 28px; }
+        .service-card h3 {
+            font-family: var(--serif);
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 0.75rem;
+        }
+        .service-card p {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            line-height: 1.65;
+        }
+
+        /* ===== FEATURED LISTINGS ===== */
+        .listings {
+            background: linear-gradient(180deg, var(--primary) 0%, var(--primary-light) 100%);
+        }
+        .listings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.75rem;
+        }
+        .listing-card {
+            overflow: hidden;
+            border-radius: var(--radius-lg);
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--glass-border);
+            transition: all var(--transition);
+        }
+        .listing-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3), var(--shadow-glow);
+            border-color: rgba(201, 169, 98, 0.3);
+        }
+        .listing-image {
+            position: relative;
+            height: 220px;
+            background: linear-gradient(135deg, var(--primary-lighter), var(--primary-light));
+            overflow: hidden;
+        }
+        .listing-image-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            opacity: 0.3;
+            background: linear-gradient(135deg, #1e1e35, #15152a);
+        }
+        .listing-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            padding: 0.35rem 0.85rem;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            background: rgba(201, 169, 98, 0.9);
+            color: var(--primary);
+            border-radius: 100px;
+        }
+        .listing-price-tag {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            padding: 0.4rem 1rem;
+            font-family: var(--serif);
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--white);
+            background: rgba(15, 15, 26, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius);
+            border: 1px solid rgba(201, 169, 98, 0.2);
+        }
+        .listing-details {
+            padding: 1.5rem;
+        }
+        .listing-address {
+            font-family: var(--serif);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 0.25rem;
+        }
+        .listing-city {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            margin-bottom: 1rem;
+        }
+        .listing-meta {
+            display: flex;
+            gap: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-light);
+            margin-bottom: 1.25rem;
+        }
+        .listing-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        .listing-meta-item svg { width: 16px; height: 16px; color: var(--accent); opacity: 0.7; }
+        .listing-meta-item strong {
+            font-weight: 600;
+            color: var(--white);
+        }
+        .listing-cta {
+            width: 100%;
+            padding: 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(201, 169, 98, 0.08);
+            color: var(--accent);
+            border: 1px solid rgba(201, 169, 98, 0.2);
+            border-radius: var(--radius);
+            transition: all var(--transition);
+            cursor: pointer;
+        }
+        .listing-cta:hover {
+            background: rgba(201, 169, 98, 0.15);
+            border-color: rgba(201, 169, 98, 0.35);
+        }
+
+        /* ===== ABOUT / TEAM ===== */
+        .about {
+            background: var(--primary-light);
+            position: relative;
+            overflow: hidden;
+        }
+        .about::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(201, 169, 98, 0.03), transparent 70%);
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+        }
+        .about-story h3 {
+            font-family: var(--serif);
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 1.25rem;
+        }
+        .about-story p {
+            font-size: 1rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        .about-story p:last-of-type { margin-bottom: 2rem; }
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+        .team-card {
+            padding: 2rem;
+            text-align: center;
+        }
+        .team-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 auto 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, rgba(201, 169, 98, 0.15), rgba(201, 169, 98, 0.05));
+            border: 2px solid rgba(201, 169, 98, 0.2);
+        }
+        .team-card h4 {
+            font-family: var(--serif);
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 0.25rem;
+        }
+        .team-card .team-title {
+            font-size: 0.8rem;
+            color: var(--accent);
+            font-weight: 500;
+            letter-spacing: 0.03em;
+            margin-bottom: 1rem;
+        }
+        .team-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+        .team-contact a {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            transition: color var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+        }
+        .team-contact a:hover { color: var(--accent); }
+        .team-contact svg { width: 14px; height: 14px; }
+
+        /* ===== WHY CHOOSE US ===== */
+        .why-us {
+            background: var(--primary);
+            position: relative;
+        }
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        .why-card {
+            padding: 2.5rem 2rem;
+            text-align: center;
+            position: relative;
+        }
+        .why-icon {
+            width: 56px;
+            height: 56px;
+            margin: 0 auto 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        .why-card h3 {
+            font-family: var(--serif);
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 0.75rem;
+        }
+        .why-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.65;
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials {
+            background: linear-gradient(180deg, var(--primary) 0%, var(--primary-light) 50%, var(--primary) 100%);
+            position: relative;
+        }
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.75rem;
+        }
+        .testimonial-card {
+            padding: 2.5rem 2rem;
+            position: relative;
+        }
+        .testimonial-stars {
+            display: flex;
+            gap: 0.2rem;
+            margin-bottom: 1.25rem;
+            color: var(--accent);
+        }
+        .testimonial-stars svg { width: 16px; height: 16px; }
+        .testimonial-quote {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-family: var(--serif);
+            font-size: 4rem;
+            color: rgba(201, 169, 98, 0.08);
+            line-height: 1;
+        }
+        .testimonial-card blockquote {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.75;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .testimonial-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: var(--primary);
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+        }
+        .testimonial-name {
+            font-weight: 600;
+            color: var(--white);
+            font-size: 0.92rem;
+        }
+        .testimonial-label {
+            font-size: 0.78rem;
+            color: var(--text-dim);
+        }
+
+        /* ===== NEIGHBORHOODS ===== */
+        .neighborhoods { background: var(--primary); }
+        .neighborhoods-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+        }
+        .neighborhood-card {
+            padding: 1.5rem;
+            text-align: center;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg);
+            transition: all var(--transition);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .neighborhood-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(201, 169, 98, 0.05), transparent);
+            opacity: 0;
+            transition: opacity var(--transition);
+        }
+        .neighborhood-card:hover::before { opacity: 1; }
+        .neighborhood-card:hover {
+            border-color: rgba(201, 169, 98, 0.3);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-glow);
+        }
+        .neighborhood-card h3 {
+            font-family: var(--serif);
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 0.4rem;
+            position: relative;
+            z-index: 1;
+        }
+        .neighborhood-card .explore {
+            font-size: 0.75rem;
+            color: var(--accent);
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ===== CONTACT ===== */
+        .contact {
+            background: var(--primary-light);
+            position: relative;
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+        @media (min-width: 768px) {
+            .contact-grid { grid-template-columns: 1fr 1fr; }
+        }
+        .contact-form { display: flex; flex-direction: column; gap: 1.25rem; }
+        .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+        .form-group label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 0.85rem 1rem;
+            font-family: var(--sans);
+            font-size: 0.92rem;
+            color: var(--white);
+            background: rgba(255,255,255,0.04);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius);
+            transition: all var(--transition);
+            outline: none;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(201, 169, 98, 0.1);
+            background: rgba(255,255,255,0.06);
+        }
+        .form-group select { cursor: pointer; }
+        .form-group select option { background: var(--primary); color: var(--white); }
+        .form-group textarea { resize: vertical; min-height: 120px; }
+        .form-group input::placeholder,
+        .form-group textarea::placeholder { color: var(--text-dim); }
+        .form-submit-btn {
+            padding: 1rem 2.5rem;
+            font-size: 0.92rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            color: var(--primary);
+            border: none;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: all var(--transition);
+            letter-spacing: 0.03em;
+        }
+        .form-submit-btn:hover {
+            background: linear-gradient(135deg, var(--accent-light), var(--accent));
+            box-shadow: 0 6px 30px rgba(201, 169, 98, 0.3);
+            transform: translateY(-2px);
+        }
+        .contact-info { display: flex; flex-direction: column; gap: 2rem; }
+        .contact-info-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+        .contact-info-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(201, 169, 98, 0.08);
+            border: 1px solid rgba(201, 169, 98, 0.15);
+            border-radius: 12px;
+            color: var(--accent);
+            flex-shrink: 0;
+        }
+        .contact-info-icon svg { width: 20px; height: 20px; }
+        .contact-info-item h4 {
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 0.25rem;
+        }
+        .contact-info-item p,
+        .contact-info-item a {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+        .contact-info-item a:hover { color: var(--accent); }
+        .map-placeholder {
+            width: 100%;
+            height: 200px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            margin-top: 1rem;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: rgba(5, 5, 12, 0.9);
+            padding: 4rem 0 0;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 3rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+        @media (max-width: 768px) {
+            .footer-grid { grid-template-columns: 1fr; }
+        }
+        .footer-brand .footer-logo {
+            font-family: var(--serif);
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 0.75rem;
+        }
+        .footer-brand .footer-logo span { color: var(--accent); }
+        .footer-brand p {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            line-height: 1.7;
+            margin-bottom: 1.25rem;
+            max-width: 350px;
+        }
+        .footer-social {
+            display: flex;
+            gap: 0.75rem;
+        }
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid var(--border-light);
+            border-radius: 10px;
+            color: var(--text-muted);
+            transition: all var(--transition);
+        }
+        .footer-social a:hover {
+            color: var(--accent);
+            border-color: rgba(201, 169, 98, 0.3);
+            background: rgba(201, 169, 98, 0.08);
+        }
+        .footer-social svg { width: 18px; height: 18px; }
+        .footer-col h4 {
+            font-family: var(--serif);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 1.25rem;
+        }
+        .footer-col ul { display: flex; flex-direction: column; gap: 0.65rem; }
+        .footer-col a {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            transition: color var(--transition);
+        }
+        .footer-col a:hover { color: var(--accent); }
+        .footer-bottom {
+            padding: 1.75rem 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+        .footer-bottom p {
+            font-size: 0.78rem;
+            color: var(--text-dim);
+            line-height: 1.6;
+        }
+        .footer-legal {
+            max-width: 700px;
+        }
+        .footer-equal-housing {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.78rem;
+            color: var(--text-dim);
+        }
+        .footer-equal-housing svg { width: 24px; height: 24px; }
+
+        /* ===== STICKY MOBILE CTA ===== */
+        .mobile-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 998;
+            display: flex;
+            background: rgba(15, 15, 26, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-top: 1px solid var(--glass-border);
+            padding: 0.75rem;
+            gap: 0.5rem;
+        }
+        .mobile-cta a {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.85rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border-radius: var(--radius);
+            transition: all var(--transition);
+        }
+        .mobile-cta-phone {
+            background: rgba(201, 169, 98, 0.1);
+            border: 1px solid rgba(201, 169, 98, 0.2);
+            color: var(--accent);
+        }
+        .mobile-cta-contact {
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            color: var(--primary);
+        }
+        .mobile-cta svg { width: 18px; height: 18px; }
+        @media (min-width: 768px) {
+            .mobile-cta { display: none; }
+        }
+        /* Add bottom padding on mobile for sticky CTA */
+        @media (max-width: 767px) {
+            .footer { padding-bottom: 5rem; }
+        }
+
+        /* ===== PRINT ===== */
+        @media print {
+            .header, .mobile-cta, .mobile-toggle, .hero::before, .hero::after, .hero-decor { display: none !important; }
+            body { background: white; color: #1a1a1a; }
+            section { padding: 2rem 0; break-inside: avoid; }
+            .section-title, .hero h1, h3, h4 { color: #1a1a1a; }
+            .glass-card { border: 1px solid #ddd; background: white; }
+            p, blockquote, a { color: #333 !important; }
+            .btn, .listing-cta { border: 1px solid #999; background: none !important; color: #1a1a1a !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== HEADER ========== -->
+    <header class="header" id="header">
+        <div class="header-inner">
+            <a href="#" class="header-brand">
+                <div class="header-logo">{{BROKERAGE_NAME_SHORT}}<span>.</span></div>
+            </a>
+            <nav class="header-nav">
+                <a href="#services">Services</a>
+                <a href="#listings">Listings</a>
+                <a href="#about">About</a>
+                <a href="#neighborhoods">Areas</a>
+                <a href="#testimonials">Reviews</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <div class="header-actions">
+                <a href="tel:{{PHONE_RAW}}" class="header-phone">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    <span class="header-phone-text">{{PHONE}}</span>
+                </a>
+                <a href="#contact" class="btn-cta-header">Contact Us</a>
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#services" onclick="closeMobile()">Services</a>
+        <a href="#listings" onclick="closeMobile()">Listings</a>
+        <a href="#about" onclick="closeMobile()">About</a>
+        <a href="#neighborhoods" onclick="closeMobile()">Areas</a>
+        <a href="#testimonials" onclick="closeMobile()">Reviews</a>
+        <a href="#contact" onclick="closeMobile()">Contact</a>
+        <a href="tel:{{PHONE_RAW}}" class="mobile-phone">{{PHONE}}</a>
+    </div>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero" id="hero">
+        <div class="hero-decor"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-eyebrow">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    {{TAGLINE}}
+                </div>
+                <h1>{{HEADLINE_PART1}} <em>{{HEADLINE_PART2}}</em></h1>
+                <p class="hero-sub">{{HERO_SUBTEXT}}</p>
+                <div class="hero-actions">
+                    <a href="#listings" class="btn btn-primary">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                        Search Homes
+                    </a>
+                    <a href="#contact" class="btn btn-outline">What's My Home Worth?</a>
+                </div>
+                <div class="hero-stats">
+                    <div>
+                        <div class="hero-stat-value">50+</div>
+                        <div class="hero-stat-label">Homes Sold</div>
+                    </div>
+                    <div>
+                        <div class="hero-stat-value">100%</div>
+                        <div class="hero-stat-label">5-Star Reviews</div>
+                    </div>
+                    <div>
+                        <div class="hero-stat-value">10+</div>
+                        <div class="hero-stat-label">Neighborhoods</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SERVICES ========== -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header center reveal">
+                <div class="section-eyebrow center">What We Do</div>
+                <h2 class="section-title">Full-Service Real Estate</h2>
+                <div class="gold-divider center"></div>
+                <p class="section-subtitle">Whether you're buying your first home, selling an investment property, or need expert property management — we've got you covered.</p>
+            </div>
+            <div class="services-grid">
+                <!-- Service 1: Buy -->
+                <div class="service-card glass-card reveal reveal-delay-1">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    </div>
+                    <h3>{{SERVICE_1_NAME}}</h3>
+                    <p>{{SERVICE_1_DESC}}</p>
+                </div>
+                <!-- Service 2: Sell -->
+                <div class="service-card glass-card reveal reveal-delay-2">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                    </div>
+                    <h3>{{SERVICE_2_NAME}}</h3>
+                    <p>{{SERVICE_2_DESC}}</p>
+                </div>
+                <!-- Service 3: Rent -->
+                <div class="service-card glass-card reveal reveal-delay-3">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                    </div>
+                    <h3>{{SERVICE_3_NAME}}</h3>
+                    <p>{{SERVICE_3_DESC}}</p>
+                </div>
+                <!-- Service 4: Manage -->
+                <div class="service-card glass-card reveal reveal-delay-4">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                    </div>
+                    <h3>{{SERVICE_4_NAME}}</h3>
+                    <p>{{SERVICE_4_DESC}}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FEATURED LISTINGS ========== -->
+    <section class="listings" id="listings">
+        <div class="container">
+            <div class="section-header center reveal">
+                <div class="section-eyebrow center">Featured Properties</div>
+                <h2 class="section-title">Explore Our Listings</h2>
+                <div class="gold-divider center"></div>
+                <p class="section-subtitle">Handpicked properties that represent exceptional value and lifestyle. Your next chapter starts here.</p>
+            </div>
+            <div class="listings-grid">
+                <!-- Listing 1 -->
+                <div class="listing-card reveal reveal-delay-1">
+                    <div class="listing-image">
+                        <div class="listing-image-placeholder">🏠</div>
+                        <span class="listing-badge">{{LISTING_1_STATUS}}</span>
+                        <span class="listing-price-tag">{{LISTING_1_PRICE}}</span>
+                    </div>
+                    <div class="listing-details">
+                        <div class="listing-address">{{LISTING_1_ADDRESS}}</div>
+                        <div class="listing-city">{{LISTING_1_CITY}}</div>
+                        <div class="listing-meta">
+                            <div class="listing-meta-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4v16h20V8H2M2 8h10V4"/></svg>
+                                <strong>{{LISTING_1_BEDS}}</strong> Beds
+                            </div>
+                            <div class="listing-meta-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16a1 1 0 0 1 1 1v3a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4v-3a1 1 0 0 1 1-1zM6 12V5a2 2 0 0 1 2-2h3"/></svg>
+                                <strong>{{LISTING_1_BATHS}}</strong> Baths
+                            </div>
+                            <div class="listing-meta-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg>
+                                <strong>{{LISTING_1_SQFT}}</strong> Sq Ft
+                            </div>
+                        </div>
+                        <button class="listing-cta">View Details →</button>
+                    </div>
+                </div>
+                <!-- Listing 2 -->
+                <div class="listing-card reveal reveal-delay-2">
+                    <div class="listing-image">
+                        <div class="listing-image-placeholder">🏡</div>
+                        <span class="listing-badge">{{LISTING_2_STATUS}}</span>
+                        <span class="listing-price-tag">{{LISTING_2_PRICE}}</span>
+                    </div>
+                    <div class="listing-details">
+                        <div class="listing-address">{{LISTING_2_ADDRESS}}</div>
+                        <div class="listing-city">{{LISTING_2_CITY}}</div>
+                        <div class="listing-meta">
+                            <div class="listing-meta-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4v16h20V8H2M2 8h10V4"/></svg>
+                                <strong>{{LISTING_2_BEDS}}</strong> Beds
+                            </div>
+                            <div class="listing-meta-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16a1 1 0 0 1 1 1v3a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4v-3a1 1 0 0 1 1-1zM6 12V5a2 2 0 0 1 2-2h3"/></svg>
+                                <strong>{{LISTING_2_BATHS}}</strong> Baths
+                            </div>
+                            <div class="listing-meta-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg>
+                                <strong>{{LISTING_2_SQFT}}</strong> Sq Ft
+                            </div>
+                        </div>
+                        <button class="listing-cta">View Details →</button>
+                    </div>
+                </div>
+                <!-- Listing 3 -->
+                <div class="listing-card reveal reveal-delay-3">
+                    <div class="listing-image">
+                        <div class="listing-image-placeholder">🏘️</div>
+                        <span class="listing-badge">{{LISTING_3_STATUS}}</span>
+                        <span class="listing-price-tag">{{LISTING_3_PRICE}}</span>
+                    </div>
+                    <div class="listing-details">
+                        <div class="listing-address">{{LISTING_3_ADDRESS}}</div>
+                        <div class="listing-city">{{LISTING_3_CITY}}</div>
+                        <div class="listing-meta">
+                            <div class="listing-meta-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4v16h20V8H2M2 8h10V4"/></svg>
+                                <strong>{{LISTING_3_BEDS}}</strong> Beds
+                            </div>
+                            <div class="listing-meta-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16a1 1 0 0 1 1 1v3a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4v-3a1 1 0 0 1 1-1zM6 12V5a2 2 0 0 1 2-2h3"/></svg>
+                                <strong>{{LISTING_3_BATHS}}</strong> Baths
+                            </div>
+                            <div class="listing-meta-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg>
+                                <strong>{{LISTING_3_SQFT}}</strong> Sq Ft
+                            </div>
+                        </div>
+                        <button class="listing-cta">View Details →</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== ABOUT / TEAM ========== -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-header center reveal">
+                <div class="section-eyebrow center">About Us</div>
+                <h2 class="section-title">Meet {{BROKERAGE_NAME}}</h2>
+                <div class="gold-divider center"></div>
+            </div>
+            <div class="about-grid reveal">
+                <div class="about-story">
+                    <h3>{{ABOUT_HEADLINE}}</h3>
+                    <p>{{ABOUT_PARAGRAPH_1}}</p>
+                    <p>{{ABOUT_PARAGRAPH_2}}</p>
+                    <a href="#contact" class="btn btn-primary">Get in Touch</a>
+                </div>
+            </div>
+            <!-- Team -->
+            <div style="margin-top: 4rem;">
+                <div class="section-header center reveal">
+                    <div class="section-eyebrow center">Our Team</div>
+                    <h2 class="section-title" style="font-size: clamp(1.5rem, 3vw, 2rem);">The People Behind Your Success</h2>
+                    <div class="gold-divider center"></div>
+                </div>
+                <div class="team-grid">
+                    <!-- Team 1 -->
+                    <div class="team-card glass-card reveal reveal-delay-1">
+                        <div class="team-photo">👩🏾‍💼</div>
+                        <h4>{{TEAM_1_NAME}}</h4>
+                        <div class="team-title">{{TEAM_1_TITLE}}</div>
+                        <div class="team-contact">
+                            {{TEAM_1_PHONE_HTML}}
+                            {{TEAM_1_EMAIL_HTML}}
+                        </div>
+                    </div>
+                    <!-- Team 2 -->
+                    <div class="team-card glass-card reveal reveal-delay-2">
+                        <div class="team-photo">👩🏾‍💼</div>
+                        <h4>{{TEAM_2_NAME}}</h4>
+                        <div class="team-title">{{TEAM_2_TITLE}}</div>
+                        <div class="team-contact">
+                            {{TEAM_2_PHONE_HTML}}
+                            {{TEAM_2_EMAIL_HTML}}
+                        </div>
+                    </div>
+                    <!-- Team 3 -->
+                    <div class="team-card glass-card reveal reveal-delay-3">
+                        <div class="team-photo">👩🏾‍💼</div>
+                        <h4>{{TEAM_3_NAME}}</h4>
+                        <div class="team-title">{{TEAM_3_TITLE}}</div>
+                        <div class="team-contact">
+                            {{TEAM_3_PHONE_HTML}}
+                            {{TEAM_3_EMAIL_HTML}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== WHY CHOOSE US ========== -->
+    <section class="why-us" id="why-us">
+        <div class="container">
+            <div class="section-header center reveal">
+                <div class="section-eyebrow center">Why Choose Us</div>
+                <h2 class="section-title">A Different Kind of Brokerage</h2>
+                <div class="gold-divider center"></div>
+                <p class="section-subtitle">We're not just another real estate company. We're a movement — empowering families, building wealth, and transforming communities.</p>
+            </div>
+            <div class="why-grid">
+                <div class="why-card glass-card reveal reveal-delay-1">
+                    <div class="why-icon">👑</div>
+                    <h3>{{WHY_1_TITLE}}</h3>
+                    <p>{{WHY_1_DESC}}</p>
+                </div>
+                <div class="why-card glass-card reveal reveal-delay-2">
+                    <div class="why-icon">🏘️</div>
+                    <h3>{{WHY_2_TITLE}}</h3>
+                    <p>{{WHY_2_DESC}}</p>
+                </div>
+                <div class="why-card glass-card reveal reveal-delay-3">
+                    <div class="why-icon">🎯</div>
+                    <h3>{{WHY_3_TITLE}}</h3>
+                    <p>{{WHY_3_DESC}}</p>
+                </div>
+                <div class="why-card glass-card reveal reveal-delay-4">
+                    <div class="why-icon">⭐</div>
+                    <h3>{{WHY_4_TITLE}}</h3>
+                    <p>{{WHY_4_DESC}}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== TESTIMONIALS ========== -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header center reveal">
+                <div class="section-eyebrow center">Testimonials</div>
+                <h2 class="section-title">What Our Clients Say</h2>
+                <div class="gold-divider center"></div>
+                <p class="section-subtitle">Real stories from real clients. Our reputation is built on trust, results, and lasting relationships.</p>
+            </div>
+            <div class="testimonials-grid">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card glass-card reveal reveal-delay-1">
+                    <div class="testimonial-quote">"</div>
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <blockquote>"{{TESTIMONIAL_1_TEXT}}"</blockquote>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">{{TESTIMONIAL_1_INITIAL}}</div>
+                        <div>
+                            <div class="testimonial-name">{{TESTIMONIAL_1_NAME}}</div>
+                            <div class="testimonial-label">Verified Client</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card glass-card reveal reveal-delay-2">
+                    <div class="testimonial-quote">"</div>
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <blockquote>"{{TESTIMONIAL_2_TEXT}}"</blockquote>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">{{TESTIMONIAL_2_INITIAL}}</div>
+                        <div>
+                            <div class="testimonial-name">{{TESTIMONIAL_2_NAME}}</div>
+                            <div class="testimonial-label">Verified Client</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card glass-card reveal reveal-delay-3">
+                    <div class="testimonial-quote">"</div>
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <blockquote>"{{TESTIMONIAL_3_TEXT}}"</blockquote>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">{{TESTIMONIAL_3_INITIAL}}</div>
+                        <div>
+                            <div class="testimonial-name">{{TESTIMONIAL_3_NAME}}</div>
+                            <div class="testimonial-label">Verified Client</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== NEIGHBORHOODS ========== -->
+    <section class="neighborhoods" id="neighborhoods">
+        <div class="container">
+            <div class="section-header center reveal">
+                <div class="section-eyebrow center">Areas We Serve</div>
+                <h2 class="section-title">Your Neighborhood Experts</h2>
+                <div class="gold-divider center"></div>
+                <p class="section-subtitle">Deep local knowledge across Indianapolis and surrounding communities. We know the streets, the schools, and the stories.</p>
+            </div>
+            <div class="neighborhoods-grid reveal">
+                {{NEIGHBORHOODS_HTML}}
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CONTACT ========== -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header center reveal">
+                <div class="section-eyebrow center">Get In Touch</div>
+                <h2 class="section-title">Start Your Journey</h2>
+                <div class="gold-divider center"></div>
+                <p class="section-subtitle">Ready to buy, sell, or invest? Let's talk. No pressure, no obligation — just honest real estate advice.</p>
+            </div>
+            <div class="contact-grid reveal">
+                <form class="contact-form" action="{{FORM_ACTION}}" method="POST">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567">
+                    </div>
+                    <div class="form-group">
+                        <label for="interest">I Want To...</label>
+                        <select id="interest" name="interest" required>
+                            <option value="" disabled selected>Select an option</option>
+                            <option value="buy">Buy a Home</option>
+                            <option value="sell">Sell My Home</option>
+                            <option value="rent">Rent a Property</option>
+                            <option value="invest">Invest in Real Estate</option>
+                            <option value="other">Other / General Inquiry</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Tell us about your real estate goals..."></textarea>
+                    </div>
+                    <button type="submit" class="form-submit-btn">Send Message →</button>
+                </form>
+                <div class="contact-info">
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <div>
+                            <h4>Office</h4>
+                            <p>{{ADDRESS}}</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        </div>
+                        <div>
+                            <h4>Phone</h4>
+                            <a href="tel:{{PHONE_RAW}}">{{PHONE}}</a>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        </div>
+                        <div>
+                            <h4>Email</h4>
+                            <a href="mailto:{{EMAIL}}">{{EMAIL}}</a>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        </div>
+                        <div>
+                            <h4>Hours</h4>
+                            <p>{{HOURS}}</p>
+                        </div>
+                    </div>
+                    <div class="map-placeholder">
+                        <span>📍 Map — embed your Google Maps iframe here</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">{{BROKERAGE_NAME_SHORT}}<span>.</span></div>
+                    <p>{{TAGLINE}} — Your trusted partner for buying, selling, renting, and managing properties in Indianapolis and beyond.</p>
+                    <div class="footer-social">
+                        {{SOCIAL_FACEBOOK_HTML}}
+                        {{SOCIAL_INSTAGRAM_HTML}}
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#listings">Listings</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#neighborhoods">Neighborhoods</a></li>
+                        <li><a href="#testimonials">Reviews</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services">Buying</a></li>
+                        <li><a href="#services">Selling</a></li>
+                        <li><a href="#services">Rentals</a></li>
+                        <li><a href="#services">Property Management</a></li>
+                        <li><a href="#contact">Free Consultation</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-legal">
+                    <p>© {{YEAR}} {{BROKERAGE_NAME}}. All rights reserved. {{LICENSE_INFO}}.</p>
+                    <p style="margin-top: 0.5rem;">The information provided on this website is for general informational purposes only. All listings are subject to prior sale, change, or withdrawal. Equal Housing Opportunity.</p>
+                </div>
+                <div class="footer-equal-housing">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21h18M3 21V10l9-7 9 7v11M9 21v-6h6v6"/></svg>
+                    Equal Housing<br>Opportunity
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========== STICKY MOBILE CTA ========== -->
+    <div class="mobile-cta">
+        <a href="tel:{{PHONE_RAW}}" class="mobile-cta-phone">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Call Now
+        </a>
+        <a href="#contact" class="mobile-cta-contact">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            Contact Agent
+        </a>
+    </div>
+
+    <!-- ========== JAVASCRIPT ========== -->
+    <script>
+        // Header scroll effect
+        const header = document.getElementById('header');
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            header.classList.toggle('scrolled', scrollY > 50);
+            lastScroll = scrollY;
+        }, { passive: true });
+
+        // Mobile menu
+        const mobileToggle = document.getElementById('mobileToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileToggle.addEventListener('click', () => {
+            mobileToggle.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        });
+        function closeMobile() {
+            mobileToggle.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Scroll reveal
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    const offset = 80;
+                    const top = target.getBoundingClientRect().top + window.scrollY - offset;
+                    window.scrollTo({ top, behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Current year
+        document.querySelectorAll('[data-year]').forEach(el => {
+            el.textContent = new Date().getFullYear();
+        });
+    </script>
+</body>
+</html>

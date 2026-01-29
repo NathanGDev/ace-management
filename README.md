@@ -1,4 +1,4 @@
-# Ace Management ♠️
+# Ace Growth ♠️
 
 Local business operator — websites & lead generation for home improvement contractors in Indianapolis.
 
@@ -21,5 +21,5 @@ Local business operator — websites & lead generation for home improvement cont
 
 ## Links
 
-- Live site: https://acemanagement.so
-- Mission Control: https://acemanagement.so/mission-control.html
+- Live site: https://acegrowth.net
+- Mission Control: https://acegrowth.net/mission-control.html

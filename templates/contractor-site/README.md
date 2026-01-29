@@ -10,7 +10,7 @@ cp config.json my-client.json
 vim my-client.json
 
 # Generate the site
-./generate.sh my-client.json /var/www/acemanagement.so/clients/my-client/
+./generate.sh my-client.json /var/www/acegrowth.net/clients/my-client/
 ```
 
 ## Config Fields

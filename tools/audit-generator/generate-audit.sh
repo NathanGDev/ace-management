@@ -9,7 +9,7 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 TEMPLATE="$SCRIPT_DIR/audit-template.html"
-DEPLOY_ROOT="/var/www/acemanagement.so/demos"
+DEPLOY_ROOT="/var/www/acegrowth.net/demos"
 
 # --- Helpers ---
 usage() {
@@ -277,7 +277,7 @@ if [ "$DEPLOY" = true ]; then
     mkdir -p "$DEPLOY_DIR"
     cp "$OUTPUT_FILE" "$DEPLOY_DIR/growth-audit.html"
     echo "🚀 Deployed to: $DEPLOY_DIR/growth-audit.html"
-    echo "🌐 URL: https://acemanagement.so/demos/$SLUG/growth-audit.html"
+    echo "🌐 URL: https://acegrowth.net/demos/$SLUG/growth-audit.html"
 fi
 
 echo ""

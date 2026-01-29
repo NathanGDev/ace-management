@@ -71,7 +71,7 @@ Automated tool that creates personalized growth audit pages for prospects.
   }
   ```
 - Output: Beautiful HTML audit page (like White Rabbit's)
-- Auto-deploy to `/var/www/acemanagement.so/demos/[business-slug]/growth-audit.html`
+- Auto-deploy to `/var/www/acegrowth.net/demos/[business-slug]/growth-audit.html`
 - Overall score, category breakdowns, specific recommendations
 - CTA at bottom: "Let's fix this — call Kae at (317) 572-7018"
 
@@ -143,9 +143,9 @@ Script that generates SEO-optimized pages for each city a contractor serves.
 ## Deployment Plan
 
 1. All code → GitHub `ace-management` repo
-2. Client sites → `/var/www/acemanagement.so/clients/[name]/`
-3. Audit pages → `/var/www/acemanagement.so/demos/[name]/`
-4. Caddy auto-serves everything under acemanagement.so
+2. Client sites → `/var/www/acegrowth.net/clients/[name]/`
+3. Audit pages → `/var/www/acegrowth.net/demos/[name]/`
+4. Caddy auto-serves everything under acegrowth.net
 
 ---
 

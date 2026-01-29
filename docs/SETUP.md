@@ -3,7 +3,7 @@
 ## VPS Details
 - IP: 167.86.121.11
 - Web server: Caddy
-- Sites: /var/www/acemanagement.so/
+- Sites: /var/www/acegrowth.net/
 
 ## Domain Setup
 Point A records to 167.86.121.11:

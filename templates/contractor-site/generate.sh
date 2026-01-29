@@ -7,7 +7,7 @@
 #   ./generate.sh <config.json> <output-directory>
 #
 # Example:
-#   ./generate.sh config.json /var/www/acemanagement.so/clients/sample-remodeling/
+#   ./generate.sh config.json /var/www/acegrowth.net/clients/sample-remodeling/
 #
 # Requirements: jq, sed, bash 4+
 #
@@ -21,7 +21,7 @@ if [ $# -lt 2 ]; then
     echo "Usage: $0 <config.json> <output-directory>"
     echo ""
     echo "Example:"
-    echo "  $0 config.json /var/www/acemanagement.so/clients/acme-remodeling/"
+    echo "  $0 config.json /var/www/acegrowth.net/clients/acme-remodeling/"
     exit 1
 fi
 

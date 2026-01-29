@@ -17,7 +17,7 @@ Generate beautiful, personalized growth audit pages for contractor prospects. Th
 1. Create a JSON file with the audit data (see `sample-audit.json` for the format)
 2. Run `generate-audit.sh` with the JSON file
 3. A beautiful HTML page is generated in `./output/`
-4. With `--deploy`, it's also copied to `/var/www/acemanagement.so/demos/<business-slug>/growth-audit.html`
+4. With `--deploy`, it's also copied to `/var/www/acegrowth.net/demos/<business-slug>/growth-audit.html`
 
 ## JSON Format
 
@@ -90,7 +90,7 @@ Generate beautiful, personalized growth audit pages for contractor prospects. Th
 ## Output
 
 - **Local:** `./output/<business-slug>-growth-audit.html`
-- **Deployed:** `https://acemanagement.so/demos/<business-slug>/growth-audit.html`
+- **Deployed:** `https://acegrowth.net/demos/<business-slug>/growth-audit.html`
 
 ## Dependencies
 

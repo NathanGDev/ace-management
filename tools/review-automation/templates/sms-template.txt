@@ -1,0 +1,5 @@
+Hey {{NAME}}, thanks for choosing {{COMPANY}}! 🏠 If you loved the work, a Google review would mean the world to us — it helps other homeowners find quality contractors:
+
+{{REVIEW_LINK}}
+
+Thanks again for trusting us with your project! ⭐

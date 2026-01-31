@@ -402,7 +402,7 @@
         border-radius: 14px;
         padding: 12px 16px;
         color: ${text};
-        font-size: 14px;
+        font-size: 16px;
         outline: none;
         transition: border-color 0.2s ease;
         resize: none;
@@ -441,9 +441,9 @@
         background: rgba(196, 154, 108, 0.1);
         border: 1px solid rgba(196, 154, 108, 0.25);
         border-radius: 12px;
-        padding: 8px 14px;
+        padding: 11px 16px;
         color: ${text};
-        font-size: 13px;
+        font-size: 14px;
         font-weight: 500;
         cursor: pointer;
         transition: all 0.2s ease;
@@ -516,23 +516,60 @@
       /* ─── Mobile Responsive ─── */
       @media (max-width: 480px) {
         #ace-chat-window {
-          width: 100vw;
-          height: 100vh;
-          max-height: 100vh;
-          bottom: 0;
-          right: 0;
-          left: 0;
-          border-radius: 0;
+          width: 100vw !important;
+          height: 100vh !important;
+          height: 100dvh !important;
+          max-height: 100vh !important;
+          max-height: 100dvh !important;
+          bottom: 0 !important;
+          right: 0 !important;
+          left: 0 !important;
+          top: 0 !important;
+          border-radius: 0 !important;
+          padding-top: env(safe-area-inset-top);
+          padding-bottom: env(safe-area-inset-bottom);
+        }
+        #ace-chat-window.ace-open {
+          transform: none !important;
         }
         #ace-chat-bubble {
-          bottom: 16px;
-          right: 16px;
-          width: 56px;
-          height: 56px;
+          bottom: 20px;
+          right: 20px;
+          width: 60px;
+          height: 60px;
         }
         #ace-chat-bubble svg {
-          width: 24px;
-          height: 24px;
+          width: 26px;
+          height: 26px;
+        }
+        .ace-chat-input {
+          font-size: 16px !important; /* prevents iOS zoom */
+        }
+        .ace-service-btn {
+          padding: 12px 18px !important;
+          font-size: 15px !important;
+          min-height: 44px;
+        }
+        .ace-services-grid {
+          gap: 10px !important;
+        }
+        .ace-msg {
+          max-width: 90% !important;
+          font-size: 15px !important;
+        }
+        #ace-chat-header {
+          padding: 16px 20px !important;
+        }
+        .ace-header-title {
+          font-size: 17px !important;
+        }
+        .ace-close-btn {
+          width: 36px !important;
+          height: 36px !important;
+        }
+        #ace-chat-footer {
+          padding: 12px 16px !important;
+          padding-bottom: calc(12px + env(safe-area-inset-bottom)) !important;
         }
       }
 
